@@ -1,0 +1,42 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <title>Django File Upload and Download </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style type="text/css">
+        .container {
+
+            /* 对于子级为 display: inline-block; 可以通过 text-align: center; 实现水平居中 */
+        
+            text-align: center;
+        
+        }
+        
+        
+        
+        .child {
+        
+            display: inline-block;
+        
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="child">
+        <form action="" method="post" enctype="multipart/form-data" >
+            {% csrf_token %}
+            {{ form.as_p }}
+        <button class="btn btn-info form-control " type="submit" value="submit">Upload</button>
+        </form>
+
+        <h1>上传成功后会自动跳转，请勿关闭页面</h1>
+    </div>
+</div> 
+</body>
+</html>
+

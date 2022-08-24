@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="utf-8"> 
+<title> 文件上传系统 </title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+ 
+<table width="100%" border="0">
+<tr>
+<td colspan="2" style="background-color:#FFA500;">
+<h1>上传成功后会自动跳转，请勿关闭页面</h1>
+</td>
+</tr>
+ 
+<tr>
+<td style="background-color:#FFD700;width:100px;">
+    <b>操作说明</b><br>
+    点击右侧“选择文件”按钮<br>
+    按钮右侧出现文件名称或ID即为选择成功<br>
+    点击下方 upload 即可上传
+</td>
+<td style="background-color:#eeeeee;height:200px;width:400px;">
+    <form action="" method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-info form-control " type="submit" value="submit">Upload</button>
+    </form>
+</td>
+</tr>
+ 
+<tr>
+<td colspan="2" style="background-color:#FFA500;text-align:center;">
+版权 © template.com</td>
+</tr>
+</table>
+ 
+</body>
+</html>
+
