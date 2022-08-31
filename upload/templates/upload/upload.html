@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <title>upload</title>
+</head>
+<body>
+<!--ajax上传文件-->
+<div>
+    {% csrf_token %}
+    上传文件：<input type="file" id="file"><br>
+    <input type="button" id="submit" value="ajax上传文件">
+</div>
+</body>
+<script>
+    $(function () {
+        $('#submit').click(function () {
+            //ajax上传文件必须通过FormData对象传输数据
+            var formdata = new FormData();
+
+            var csrf_data = $('input[name=csrfmiddlewaretoken]').val();
+            //获取上传文件对象(文件句柄)：定位对象，转成DOM对象，取值(文件对象列表)
+            var file = $('#file')[0].files[0];
+
+            reader = new FileReader();
+
+            reader.onload = function(e) {
+                var data = e.target.result,
+                iv = crypto.getRandomValues(new Uint8Array(16));
+                
+                console.log(data.slice(0,100));
+
+                crypto.subtle.generateKey({ 'name': 'AES-CBC', 'length': 256 }, false, ['encrypt', 'decrypt'])
+                    .then(key => crypto.subtle.encrypt({ 'name': 'AES-CBC', iv }, key, data))
+                    .then(encrypted => {
+                        console.log(encrypted);
+                        alert('The encrypted data is ' + encrypted.byteLength + ' bytes long'); // encrypted is an ArrayBuffer
+                    })
+                    .catch(console.error);
+            }
+
+            reader.readAsArrayBuffer(file);
+            file = File(reader.result, "test")
+
+            formdata.append('csrfmiddlewaretoken', csrf_data);// csrf
+            formdata.append('file', file);
+
+            fetch('{% url 'upload' %}', {
+                method: 'POST',
+                body: formdata,
+            })
+        })
+    })
+</script>
+</html>

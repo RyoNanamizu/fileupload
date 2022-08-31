@@ -125,3 +125,23 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+PUBLIC_KEY = """
+-----BEGIN RSA PUBLIC KEY-----
+MEgCQQCmmQHAOXYzEtTqhi1xUW2noC58vPHFC1qVcKFdIEgzm4zXnJFqeheNrUpZ
++46eB/9tu+Z/VsHNTWqvMPklHLUNAgMBAAE=
+-----END RSA PUBLIC KEY-----
+"""
+
+PRIVATE_KEY ="""
+-----BEGIN RSA PRIVATE KEY-----
+MIIBPQIBAAJBAKaZAcA5djMS1OqGLXFRbaegLny88cULWpVwoV0gSDObjNeckWp6
+F42tSln7jp4H/2275n9Wwc1Naq8w+SUctQ0CAwEAAQJADHNvABDLVrHXm9d/WfK+
+AUMldkkgwJtCn9yVEsKwz9mxauMv/1i+AT66CvP3gfFoa+2LmjLTJaVAzMZjAUra
+AQIjAPyY3t4HVPamWWqhRbyR/x9r5ud2PzifkHy1VlUWFEPttE0CHwCo14z7FLDB
+NcMLJMWKGN9wpAySvrkARmvrB5nmY8ECIwCaGu3FSXXVcNGWk0OHcw7R7bOWvPZ/
+JiIxYzSDfo/ojWn1Ah4Bt+fkakp+POjWRTKJfEVR5SmHmM9TNGRGyRYE5UECIwCN
+cxhCEYO9WcNEVy6GAthqXHVhd4mxYV8Vo0zJJKv7FQgq
+-----END RSA PRIVATE KEY-----
+"""
