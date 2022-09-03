@@ -28,7 +28,7 @@ def success(request):
 
 def  upload(request):
     if request.method=='GET':
-        return render(request,'upload/upload.html')
+        return render(request,'upload/upload.html', {"pub": settings.PUBLIC_KEY})
     elif request.method=='POST':
         file_obj = request.FILES.get('file')
         file_name = file_obj.name
