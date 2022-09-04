@@ -11,19 +11,6 @@ from .utils import handle_uploaded_file, handle_uploaded_file_js
 
 def success(request):
     return render(request, 'upload/success.html')
-
-
-# Imaginary function to handle an uploaded file.
-# def upload_file(request):
-#     if request.method == 'POST':
-#         form = UploadFileForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             handle_uploaded_file(request.FILES['file'])
-#             return HttpResponseRedirect("/success")
-#     else:
-#         form = UploadFileForm()
-#         i = random.randint(1,3)
-#         return render(request, f'upload/upload{i}.html', {'form': form})
     
 
 def  upload(request):
