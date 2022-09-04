@@ -17,12 +17,19 @@ def  upload(request):
     if request.method=='GET':
         return render(request,'upload/upload.html', {"pub": settings.PUBLIC_KEY})
     elif request.method=='POST':
+        data = request.POST.get('data')
+        print(type(data))
+        print(data.encode('utf-8'))
+        key_obj = request.FILES.get('key')
         file_obj = request.FILES.get('file')
-        file_name = file_obj.name
+        print(len(key_obj))
+        print(len(file_obj))
+        # file_name = 'test'
         # 拼接绝对路径
-        file_path = os.path.join('/tmp', file_name)
-        with open(file_path, 'wb')as f:
-            for chunk in file_obj.chunks():#chunks()每次读取数据默认我64k
-                f.write(chunk)
+        # file_path = os.path.join('/tmp', file_name)
+        # with open(file_path, 'wb') as f:
+            
+        #     for chunk in file_obj.chunks():#chunks()每次读取数据默认我64k
+        #         f.write(chunk)
         return HttpResponseRedirect("/success")
     

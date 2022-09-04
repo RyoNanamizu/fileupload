@@ -28,18 +28,16 @@
             //获取上传文件对象(文件句柄)：定位对象，转成DOM对象，取值(文件对象列表)
             var file = $('#file')[0].files[0];
 
-            dict = encrypt(file, pub)
+            encrypt(file, pub).then(dict => {
+                formdata.append('csrfmiddlewaretoken', csrf_data);// csrf
+                formdata.append('file', dict["file"])
+                formdata.append('key', dict["key"])
+                formdata.append('data', dict)
 
-            for (var key in dict) {
-                console.log(key)
-            }
-        
-            formdata.append('csrfmiddlewaretoken', csrf_data);// csrf
-            formdata.append('file', file);
-
-            fetch('{% url 'upload' %}', {
-                method: 'POST',
-                body: formdata,
+                fetch('{% url 'upload' %}', {
+                    method: 'POST',
+                    body: formdata,
+                })
             })
         })
     })
