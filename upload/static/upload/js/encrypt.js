@@ -11,7 +11,7 @@ function str2ab(str) {
 const encrypt = async (file, publicKey) => {
   const publicKeyBinary = str2ab(atob(publicKey))
   const publicKeyImported = await window.crypto.subtle.importKey(
-    'pkcs8',
+    'spki',
     publicKeyBinary,
     {
       name: 'RSA-PSS',
